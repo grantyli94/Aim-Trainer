@@ -1,0 +1,10 @@
+.Home {
+  margin-top: 20px;
+  background-image: none;
+  animation: fadeIn 2s;
+}
+
+.Home-Button {
+  margin: 5px;
+  animation: fadeIn 3s;
+}
