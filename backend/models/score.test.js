@@ -15,7 +15,7 @@ beforeEach(commonBeforeEach);
 afterEach(commonAfterEach);
 afterAll(commonAfterAll);
 
-/************************************** create */
+/************************************** createClassic */
 
 describe("createClassic", function () {
   let name = 'BOB';
@@ -36,6 +36,49 @@ describe("createClassic", function () {
       expect(err instanceof BadRequestError).toBeTruthy();
     }
   });
+});
+
+/************************************** getClassicScores */
+
+describe("getClassicScores", function () {
+  test("works", async function () {
+    let res = await Score.getClassicScores();
+    expect(res.length).toEqual(3);
+  });
+
+});
+
+/************************************** createTracking */
+
+describe("createTracking", function () {
+  let name = 'BOB';
+  let score = 1700;
+  let badName = 'BADD';
+
+  test("works", async function () {
+    let res = await Score.createTracking(name, score);
+    expect(res.score).toEqual(1700);
+    expect(res.name).toEqual('BOB');
+  });
+
+  test("bad request for names longer than 3 characters", async function () {
+    try {
+      await Score.createTracking(badName, score);
+      fail();
+    } catch (err) {
+      expect(err instanceof BadRequestError).toBeTruthy();
+    }
+  });
+});
+
+/************************************** getTrackingScores */
+
+describe("getTrackingScores", function () {
+  test("works", async function () {
+    let res = await Score.getTrackingScores();
+    expect(res.length).toEqual(3);
+  });
+  
 });
 
 /************************************** findAll */
