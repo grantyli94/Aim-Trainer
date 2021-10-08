@@ -20,11 +20,21 @@ afterAll(commonAfterAll);
 describe("createClassic", function () {
   let name = 'BOB';
   let score = 17;
+  let badName = 'BADD';
 
   test("works", async function () {
     let res = await Score.createClassic(name, score);
     expect(res.score).toEqual(17);
     expect(res.name).toEqual('BOB');
+  });
+
+  test("bad request for names longer than 3 characters", async function () {
+    try {
+      await Score.createClassic(badName, score);
+      fail();
+    } catch (err) {
+      expect(err instanceof BadRequestError).toBeTruthy();
+    }
   });
 });
 

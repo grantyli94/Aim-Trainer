@@ -1,7 +1,7 @@
 "use strict";
 
 const db = require("../db");
-const { NotFoundError} = require("../expressError");
+const { NotFoundError, BadRequestError} = require("../expressError");
 
 class Score {
   
@@ -14,6 +14,8 @@ class Score {
    **/
 
   static async createClassic(name, score) {
+    if (name.length > 3) throw new BadRequestError(`Name must be 3 characters or less`);
+    
     const result = await db.query(
       `INSERT INTO scores_classic (name, score)
        VALUES ($1, $2)
