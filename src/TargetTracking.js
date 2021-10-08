@@ -1,6 +1,3 @@
-import './TargetTracking.css';
-import './Target.css';
-
 import React, { useState, useEffect } from 'react';
 
 const HEIGHT = 500;

@@ -1,4 +1,3 @@
-import './Game.css';
 import Target from './Target';
 import Timer from './Timer';
 import React, { useState, useEffect } from 'react';

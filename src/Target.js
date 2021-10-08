@@ -1,5 +1,3 @@
-import './Target.css';
-
 function Target({ top, left, radius, hideTarget }) {
   console.log("Target renders")
   const styles = {

@@ -1,5 +1,3 @@
-// uses same CSS as Game.js
-import './Game.css'
 import TargetTracking from './TargetTracking';
 import Timer from './Timer';
 import React, { useState } from 'react';

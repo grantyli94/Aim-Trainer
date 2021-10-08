@@ -2,37 +2,65 @@
   text-align: center;
 }
 
-/* .App-logo {
-  height: 40vmin;
+/*************** Home Styling ***************/
+
+.Home {
+  margin-top: 20px;
+  background-image: none;
+  animation: fadeIn 2s;
+}
+
+.Home-Button {
+  margin: 5px;
+  animation: fadeIn 3s;
+}
+
+/*************** Game Styling ***************/
+
+.Game {
+  margin-top: 20px;
+}
+
+.Game-Area {
+  display: block;
+  position: relative;
+  border: solid 2px #6f42c1;
+  height: 500px;
+  width: 600px;
+  margin: auto;
+  cursor: url('./cursor.cur'), auto;
+  background-color: black;
+}
+
+/*************** Target Styling ***************/
+
+particle {
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 0;
   pointer-events: none;
-} */
-
-/* @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-} */
-
-/* .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
-.App-link {
-  color: #61dafb;
+.Target {
+  position: absolute;
+  border-radius: 50%;
+  background-color: #3cf281;
+  /* background-image: url('https://static.wixstatic.com/media/2cd43b_0bb55106a2784b7bb3a8613152750ccc~mv2.png/v1/fill/w_256,h_256,q_90/2cd43b_0bb55106a2784b7bb3a8613152750ccc~mv2.png'); */
+  background-size: 100% 100%;
+  animation: fadeIn 2s;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
+@keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+.TargetTracking {
+  position: absolute;
+  border-radius: 50%;
+  background-color: #3cf281;
+  background-size: 100% 100%;
+}
