@@ -2,8 +2,6 @@ import TargetTracking from './TargetTracking';
 import Timer from './Timer';
 import React, { useState } from 'react';
 
-const HEIGHT = 500;
-const WIDTH = 600;
 const TARGET_RADIUS = 30;
 
 function GameTracking() {
@@ -31,7 +29,7 @@ function GameTracking() {
       : <Timer endGame={endGame}/>
       }
       
-    <h2>Score: {score}</h2>
+    <h2 className="Game-Score">Score: {score}</h2>
 
       {gameOver
       ? <span>

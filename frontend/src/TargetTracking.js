@@ -25,16 +25,17 @@ function TargetTracking({ radius, updateScore }) {
         transition: "3s"
       }));
     }, 1000);
+
     return () => clearInterval(interval);
   }, []);
 
-  function generateY(height) {
+  function generateY() {
     let maxTop = HEIGHT - radius;
     let top = Math.random() * maxTop;
     return top;
   }
 
-  function generateX(width) {
+  function generateX() {
     let maxLeft = WIDTH - radius;
     let left = Math.random() * maxLeft;
     return left;
@@ -48,7 +49,6 @@ function TargetTracking({ radius, updateScore }) {
       let diff = end - currScore;
       updateScore(diff);
     }
-
   }
 
   return (

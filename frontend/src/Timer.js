@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from "react";
 
-const TIME = 60;
+const TIME = 30;
 
 function Timer({ endGame }) {
   const [seconds, setSeconds] = useState(TIME);

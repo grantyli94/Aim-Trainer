@@ -58,7 +58,7 @@ function Game() {
       : <Timer endGame={endGame}/>
       }
       
-      <h2>Score: {score}</h2>
+      <h2 className="Game-Score">Score: {score}</h2>
 
       {gameOver
       ? <button className="btn btn-secondary" onClick={restart}>Restart</button>
