@@ -16,6 +16,12 @@ function Game() {
   const [submitted, setSubmitted] = useState(false);
   console.log("Game renders");
 
+  useEffect(function showTarget() {
+    setTimeout(() => {
+      setShowTarget(true)
+    }, 0)
+  }, [score])
+
   function generateTargetCoordinates() {
     console.log('generateTargetCoordinates')
     let maxTop = HEIGHT - TARGET_RADIUS;
@@ -29,11 +35,11 @@ function Game() {
     console.log('generateTarget');
     let [top, left] = generateTargetCoordinates();
     return <Target
-              top={top}
-              left={left}
-              radius={TARGET_RADIUS}
-              hideTarget={hideTarget}
-            />
+      top={top}
+      left={left}
+      radius={TARGET_RADIUS}
+      hideTarget={hideTarget}
+    />;
   }
 
   function hideTarget() {
@@ -62,22 +68,16 @@ function Game() {
     setSubmitted(true);
   }
 
-  useEffect(function showTarget() {
-    setTimeout(() => {
-      setShowTarget(true)
-    }, 0)
-  }, [score])
-
   return (
     <div className="Game">
       {gameOver
         ? ""
-        : <Timer endGame={endGame}/>}
+        : <Timer endGame={endGame} />}
 
       <h2 className="Game-Score">Score: {score}</h2>
 
-    {gameOver
-      ? <div>
+      {gameOver
+        ? <div>
           <button className="Game-Restart btn btn-secondary" onClick={restart}>Restart</button>
           <ScoreForm
             submitScore={submitScore}
@@ -86,8 +86,8 @@ function Game() {
             submitted={submitted}
           />
         </div>
-      : <div className="Game-Area">
-        {showTarget && generateTarget()}
+        : <div className="Game-Area">
+          {showTarget && generateTarget()}
         </div>}
     </div>
   );

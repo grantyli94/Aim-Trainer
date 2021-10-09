@@ -94,7 +94,6 @@ const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
 
    static async createClassic(data) {
     let res = await this.request(`scores/classic`, data, "post");
-    console.log(res);
     return res.score;
   }
   
@@ -103,6 +102,17 @@ const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
   static async getClassicScores() {
     let res = await this.request(`scores/classic`);
     return res.scores;
+  }
+
+  /** Creates a new tracking score entry
+    *  data - { name, score }
+    *  returns { id, name, score }
+    */
+
+  static async createTracking(data) {
+    let res = await this.request(`scores/tracking`, data, "post");
+    console.log(res.score);
+    return res.score;
   }
   
   /** Get all tracking scores */
