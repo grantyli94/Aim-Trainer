@@ -53,7 +53,8 @@
   font-family: monospace;
   letter-spacing: 0.5ch;
 }
-input:focus {
+
+.Game-Form-Input:focus {
   outline: none;
   color: dodgerblue;
 }

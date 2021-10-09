@@ -7,6 +7,7 @@ function ScoreForm({ submitScore, handleChange, name, submitted }) {
           className="Game-Form-Input form-control"
           onChange={handleChange}
           value={name}
+          minlength='3'
           maxlength='3'
           id="scoreInput"
           aria-describedby="enterName"
