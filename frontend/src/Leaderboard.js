@@ -25,11 +25,11 @@ function Leaderboard() {
   return (
     <div className="Leaderboard">
       <div className="Leaderboard-Options">
-        <h1 onClick={() => setGameType("classic")}>CLASSIC</h1>
-        <h1 onClick={() => setGameType("tracking")}>TRACKING</h1>
+        <button className="btn btn-primary"><h1 onClick={() => setGameType("classic")}>CLASSIC</h1></button>
+        <button className="btn btn-primary"><h1 onClick={() => setGameType("tracking")}>TRACKING</h1></button>
       </div>
-      <ol>
-        {scores.map(s => <li>{s.name}, {s.score}</li>)}
+      <ol className="list-group">
+        {scores.map(s => <li >{s.name}, {s.score}</li>)}
       </ol>
     </div>
   );

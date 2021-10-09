@@ -78,7 +78,17 @@ particle {
 
 /*************** Leaderboard Styling ***************/
 
+.Leaderboard {
+  margin: 2rem 0;
+  font-size: x-large;
+}
+
 .Leaderboard-Options {
+  margin: 2rem 0;
   display: flex;
   justify-content: space-evenly;
+}
+
+.Leaderboard ol {
+  list-style-position: inside;
 }

@@ -1,10 +1,12 @@
 Fixes
 - make game box look cool
+- create ScoreCard component to be used in Leaderboard
 - change time remaining to red when 5 seconds are left
 - stlye Timer component (add box?)
 - add instructions
 
 Customizations
+- Make leaderboard have fade-in or sliding down animation
 - cursor crosshair
 - window size
 - check accuracy by tracking non-target clicks
