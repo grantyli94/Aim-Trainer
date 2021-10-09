@@ -3,6 +3,7 @@ import TargetTracking from './TargetTracking';
 import Timer from './Timer';
 import AimlyApi from './api';
 import ScoreForm from './ScoreForm';
+import Instructions from './Instructions';
 
 const TARGET_RADIUS = 30;
 
@@ -55,9 +56,12 @@ function GameTracking() {
           />
         </div>
         : <div className="Game-Area">
-          {<TargetTracking
-            radius={TARGET_RADIUS}
-            updateScore={updateScore} />}
+            <div className="Game-Area-Box">
+              {<TargetTracking
+                radius={TARGET_RADIUS}
+                updateScore={updateScore} />}
+            </div>
+            <Instructions gameType="tracking"/>
         </div>}
     </div>
   );

@@ -3,6 +3,7 @@ import Target from './Target';
 import Timer from './Timer';
 import AimlyApi from './api';
 import ScoreForm from './ScoreForm';
+import Instructions from './Instructions';
 
 const HEIGHT = 500;
 const WIDTH = 600;
@@ -85,8 +86,13 @@ function Game() {
           />
         </div>
         : <div className="Game-Area">
-          {showTarget && generateTarget()}
-        </div>}
+            <div className="Game-Area-Box">
+              {showTarget && generateTarget()}
+            </div>
+            <Instructions gameType="classic"/>
+          </div>
+        }
+      
     </div>
   );
 

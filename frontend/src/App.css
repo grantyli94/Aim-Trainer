@@ -22,23 +22,27 @@
   margin: 1rem auto;
 }
 
-.Game-Area {
-  display: block;
-  position: relative;
-  border: solid 2px #6f42c1;
-  height: 500px;
-  width: 600px;
-  margin: auto;
-  cursor: url('./cursor.cur'), auto;
-  background-color: black;
-}
-
 .Game-Score {
   color: #3cf281;
 }
 
 .Game-Restart {
   margin: 1rem auto;
+}
+
+.Game-Area {
+  display: block;
+  width: 600px;
+  margin: 1rem auto;
+}
+
+.Game-Area-Box {
+  margin: 1rem auto;
+  position: relative;
+  border: solid 2px #6f42c1;
+  height: 500px;
+  cursor: url('./cursor.cur'), auto;
+  background-color: black;
 }
 
 .Game-Form-Input {
