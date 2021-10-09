@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import AimlyApi from "./api";
+import ScoreCard from "./ScoreCard";
 
 function Leaderboard() {
   console.log("Leaderboard renders");
@@ -28,9 +29,12 @@ function Leaderboard() {
         <button className="btn btn-primary"><h1 onClick={() => setGameType("classic")}>CLASSIC</h1></button>
         <button className="btn btn-primary"><h1 onClick={() => setGameType("tracking")}>TRACKING</h1></button>
       </div>
-      <ol className="list-group">
+      <div className="Leaderboard-Scores">
+        {scores.map((s, i) => <ScoreCard rank={i+1} name={s.name} score={s.score}/>)}
+      </div>
+      {/* <ol className="list-group">
         {scores.map(s => <li >{s.name}, {s.score}</li>)}
-      </ol>
+      </ol> */}
     </div>
   );
 }
