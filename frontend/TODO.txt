@@ -1,6 +1,6 @@
 Fixes
 - make game box look cool
-- create ScoreCard component to be used in Leaderboard
+- make score submit form a separate component
 - change time remaining to red when 5 seconds are left
 - stlye Timer component (add box?)
 - add instructions

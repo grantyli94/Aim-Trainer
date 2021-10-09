@@ -19,7 +19,7 @@
 /*************** Game Styling ***************/
 
 .Game {
-  margin-top: 20px;
+  margin: 1rem auto;
 }
 
 .Game-Area {
@@ -35,6 +35,27 @@
 
 .Game-Score {
   color: #3cf281;
+}
+
+.Game-Restart {
+  margin: 1rem auto;
+}
+
+.Game-Form-Input {
+  display: block;
+  text-transform: uppercase;
+  margin: 1rem auto;
+  border: none;
+  padding: 0;
+  width: 4ch;
+  background: repeating-linear-gradient(90deg, dimgrey 0, dimgrey 1ch, transparent 0, transparent 1.5ch) 0 100%/10ch 2px no-repeat;
+  font-size: 5ch;
+  font-family: monospace;
+  letter-spacing: 0.5ch;
+}
+input:focus {
+  outline: none;
+  color: dodgerblue;
 }
 
 /*************** Target Styling ***************/

@@ -32,9 +32,6 @@ function Leaderboard() {
       <div className="Leaderboard-Scores">
         {scores.map((s, i) => <ScoreCard rank={i+1} name={s.name} score={s.score}/>)}
       </div>
-      {/* <ol className="list-group">
-        {scores.map(s => <li >{s.name}, {s.score}</li>)}
-      </ol> */}
     </div>
   );
 }

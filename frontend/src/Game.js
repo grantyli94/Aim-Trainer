@@ -1,7 +1,8 @@
+import React, { useState, useEffect } from 'react';
 import Target from './Target';
 import Timer from './Timer';
-import React, { useState, useEffect } from 'react';
 import AimlyApi from './api';
+import ScoreForm from './ScoreForm';
 
 const HEIGHT = 500;
 const WIDTH = 600;
@@ -9,8 +10,10 @@ const TARGET_RADIUS = 30;
 
 function Game() {
   const [score, setScore] = useState(0);
+  const [name, setName] = useState("");
   const [showTarget, setShowTarget] = useState(false);
   const [gameOver, setGameOver] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
   console.log("Game renders");
 
   function generateTargetCoordinates() {
@@ -26,10 +29,11 @@ function Game() {
     console.log('generateTarget');
     let [top, left] = generateTargetCoordinates();
     return <Target
-      top={top}
-      left={left}
-      radius={TARGET_RADIUS}
-      hideTarget={hideTarget} />
+              top={top}
+              left={left}
+              radius={TARGET_RADIUS}
+              hideTarget={hideTarget}
+            />
   }
 
   function hideTarget() {
@@ -42,12 +46,20 @@ function Game() {
   }
 
   function restart() {
-    setScore(s => 0);
+    setScore(0);
     setGameOver(false);
+    setSubmitted(false);
   }
 
-  async function submitScore(score) {
+  function handleChange(evt) {
+    setName(evt.target.value);
+  }
 
+  async function submitScore(evt) {
+    evt.preventDefault();
+    const data = { name: name.toUpperCase(), score };
+    await AimlyApi.createClassic(data);
+    setSubmitted(true);
   }
 
   useEffect(function showTarget() {
@@ -60,27 +72,23 @@ function Game() {
     <div className="Game">
       {gameOver
         ? ""
-        : <Timer endGame={endGame} />
-      }
+        : <Timer endGame={endGame}/>}
 
       <h2 className="Game-Score">Score: {score}</h2>
 
-      {gameOver
-        ? <div className="container">
-          <button className="btn btn-secondary" onClick={restart}>Restart</button>
-          <br />
-          <form onSubmit={() => submitScore(score)}>
-            <div class="form-group">
-              {/* <label for="scoreInput" class="form-label mt-4">Name</label> */}
-              <input type="text" class="form-control" id="scoreInput" aria-describedby="enterName" placeholder="Enter Name (3 Characters)"/>
-            </div>
-            <button type="submit" className="btn btn-secondary">Submit Score</button>
-          </form>
+    {gameOver
+      ? <div>
+          <button className="Game-Restart btn btn-secondary" onClick={restart}>Restart</button>
+          <ScoreForm
+            submitScore={submitScore}
+            handleChange={handleChange}
+            name={name}
+            submitted={submitted}
+          />
         </div>
-        : <div className="Game-Area">
-          {showTarget && generateTarget()}
-        </div>
-      }
+      : <div className="Game-Area">
+        {showTarget && generateTarget()}
+        </div>}
     </div>
   );
 
