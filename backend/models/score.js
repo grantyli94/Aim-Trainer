@@ -7,21 +7,20 @@ class Score {
   
   /** Create a classic score, update db, return new score data.
    *
-   * name: 3-letter string
-   * score: integer
+   * data should be { name, score }
    * 
    * Returns {id, name, score}
    * 
    **/
 
-  static async createClassic(name, score) {
-    if (name.length > 3) throw new BadRequestError(`Name must be 3 characters or less`);
+  static async createClassic(data) {
+    if (data.name.length > 3) throw new BadRequestError(`Name must be 3 characters or less`);
     
     const result = await db.query(
       `INSERT INTO scores_classic (name, score)
        VALUES ($1, $2)
        RETURNING id, name, score`,
-       [name, score]
+       [data.name, data.score]
     );
 
     const newScore = result.rows[0];
@@ -46,21 +45,20 @@ class Score {
 
   /** Create a classic score, update db, return new score data.
    *
-   * name: 3-letter string
-   * score: integer
+   * data should be { name, score }
    * 
    * Returns {id, name, score}
    * 
    **/
 
-   static async createTracking(name, score) {
-    if (name.length > 3) throw new BadRequestError(`Name must be 3 characters or less`);
+   static async createTracking(data) {
+    if (data.name.length > 3) throw new BadRequestError(`Name must be 3 characters or less`);
     
     const result = await db.query(
       `INSERT INTO scores_tracking (name, score)
        VALUES ($1, $2)
        RETURNING id, name, score`,
-       [name, score]
+       [data.name, data.score]
     );
 
     const newScore = result.rows[0];

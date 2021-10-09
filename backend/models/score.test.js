@@ -18,19 +18,25 @@ afterAll(commonAfterAll);
 /************************************** createClassic */
 
 describe("createClassic", function () {
-  let name = 'BOB';
-  let score = 17;
-  let badName = 'BADD';
+  let newScore = {
+    name: 'BOB',
+    score: 17
+  };
+  
+  let badScore = {
+    name: 'BADD',
+    score: 17
+  }
 
   test("works", async function () {
-    let res = await Score.createClassic(name, score);
+    let res = await Score.createClassic(newScore);
     expect(res.score).toEqual(17);
     expect(res.name).toEqual('BOB');
   });
 
   test("bad request for names longer than 3 characters", async function () {
     try {
-      await Score.createClassic(badName, score);
+      await Score.createClassic(badScore);
       fail();
     } catch (err) {
       expect(err instanceof BadRequestError).toBeTruthy();
@@ -51,19 +57,25 @@ describe("getClassicScores", function () {
 /************************************** createTracking */
 
 describe("createTracking", function () {
-  let name = 'BOB';
-  let score = 1700;
-  let badName = 'BADD';
+  let newScore = {
+    name: 'BOB',
+    score: 1700
+  };
+
+  let badScore = {
+    name: 'BADD',
+    score: 1700
+  }
 
   test("works", async function () {
-    let res = await Score.createTracking(name, score);
+    let res = await Score.createTracking(newScore);
     expect(res.score).toEqual(1700);
     expect(res.name).toEqual('BOB');
   });
 
   test("bad request for names longer than 3 characters", async function () {
     try {
-      await Score.createTracking(badName, score);
+      await Score.createTracking(badScore);
       fail();
     } catch (err) {
       expect(err instanceof BadRequestError).toBeTruthy();

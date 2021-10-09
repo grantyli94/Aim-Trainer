@@ -12,51 +12,66 @@ const Score = require("../models/score");
 const router = express.Router({ mergeParams: true });
 
 
-/** POST / { job } => { job }
+/** POST / { score } => { score }
  *
- * job should be { title, salary, equity, companyHandle }
+ * score should be { name, score }
  *
- * Returns { id, title, salary, equity, companyHandle }
+ * Returns { id, name, score }
  *
- * Authorization required: admin
  */
 
-router.post("/", async function (req, res, next) {
+router.post("/classic", async function (req, res, next) {
   // const validator = jsonschema.validate(req.body, jobNewSchema);
   // if (!validator.valid) {
   //   const errs = validator.errors.map(e => e.stack);
   //   throw new BadRequestError(errs);
   // }
 
-  const job = await Job.create(req.body);
-  return res.status(201).json({ job });
+  const score = await Score.createClassic(req.body);
+  return res.status(201).json({ score });
 });
 
 /** GET / =>
- *   { jobs: [ { id, title, salary, equity, companyHandle, companyName }, ...] }
+ *   { scores: [ { id, name, score }, ...] }
  *
- * Can provide search filter in query:
- * - minSalary
- * - hasEquity (true returns only jobs with equity > 0, other values ignored)
- * - title (will find case-insensitive, partial matches)
-
- * Authorization required: none
  */
 
-router.get("/", async function (req, res, next) {
-  const q = req.query;
-  // arrive as strings from querystring, but we want as int/bool
-  if (q.minSalary !== undefined) q.minSalary = +q.minSalary;
-  q.hasEquity = q.hasEquity === "true";
-
+router.get("/classic", async function (req, res, next) {
   // const validator = jsonschema.validate(q, jobSearchSchema);
   // if (!validator.valid) {
   //   const errs = validator.errors.map(e => e.stack);
   //   throw new BadRequestError(errs);
   // }
 
-  const jobs = await Job.findAll(q);
-  return res.json({ jobs });
+  const scores = await Score.getClassicScores();
+  return res.json({ scores });
+});
+
+router.post("/tracking", async function (req, res, next) {
+  // const validator = jsonschema.validate(req.body, jobNewSchema);
+  // if (!validator.valid) {
+  //   const errs = validator.errors.map(e => e.stack);
+  //   throw new BadRequestError(errs);
+  // }
+
+  const score = await Score.createTracking(req.body);
+  return res.status(201).json({ score });
+});
+
+/** GET / =>
+ *   { scores: [ { id, name, score }, ...] }
+ *
+ */
+
+router.get("/tracking", async function (req, res, next) {
+  // const validator = jsonschema.validate(q, jobSearchSchema);
+  // if (!validator.valid) {
+  //   const errs = validator.errors.map(e => e.stack);
+  //   throw new BadRequestError(errs);
+  // }
+
+  const scores = await Score.getTrackingScores();
+  return res.json({ scores });
 });
 
 
