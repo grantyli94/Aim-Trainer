@@ -75,3 +75,10 @@ particle {
   background-color: #3cf281;
   background-size: 100% 100%;
 }
+
+/*************** Leaderboard Styling ***************/
+
+.Leaderboard-Options {
+  display: flex;
+  justify-content: space-evenly;
+}
