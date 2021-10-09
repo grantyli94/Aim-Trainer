@@ -13,7 +13,7 @@ function Timer({ endGame }) {
       endGame();
       setSeconds(s => TIME);
     }
-  }, [seconds]);
+  }, [seconds, endGame]);
 
   return (
     <div className="Timer">

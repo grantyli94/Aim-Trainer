@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import TargetTracking from './TargetTracking';
 import Timer from './Timer';
 import AimlyApi from './api';
@@ -17,9 +17,7 @@ function GameTracking() {
     setScore(s => s + score);
   }
 
-  function endGame() {
-    setGameOver(true);
-  }
+  const endGame = useCallback(() => setGameOver(true), []);
 
   function restart() {
     setScore(0);
